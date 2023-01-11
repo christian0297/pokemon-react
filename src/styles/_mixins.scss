@@ -1,0 +1,35 @@
+@import './breakpoints.scss';
+
+
+@mixin background-types-pokemon($type-name, $primary-type, $secondary-type) {
+    @if $type-name == "flying" or $type-name == "ground" or $type-name == "dragon"{ 
+        background: linear-gradient(180deg, $primary-type 50%, $secondary-type 50%);
+    }
+    @else{
+        background: linear-gradient(180deg, $primary-type 50%, $primary-type 50%);
+    }
+}
+
+@mixin sm {
+    @media(min-width: map-get($breakpoints, "sm")){
+        @content;
+    }
+}
+
+@mixin md {
+    @media(min-width: map-get($breakpoints, "md")){
+        @content;
+    }
+}
+
+@mixin lg {
+    @media(min-width: map-get($breakpoints, "lg")){
+        @content;
+    }
+}
+
+@mixin xl {
+    @media(min-width: map-get($breakpoints, "xl")){
+        @content;
+    }
+}

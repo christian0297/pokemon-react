@@ -1,0 +1,42 @@
+.navbar{
+    box-shadow: 0px 5px 10px 0px #aaa;
+    position: fixed;
+    width: 100%;
+    background: #fff;
+    color: #000;
+    opacity: 0.9;
+    z-index: 999;
+    top: 0;
+    height: 5.5rem;
+    
+    &-container{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        width: 90%;
+        margin: 1rem auto;
+
+        &-home{
+            .pokemon-logo{
+                height: 50px;
+            }
+        }
+
+        &-pokedex{
+            display: flex;
+            flex-direction: column;
+            color: black;
+            text-decoration: none;
+            
+            &:hover{
+                text-decoration: underline;
+            }
+
+            .pokedex-icon{
+                height: 30px;
+                margin-bottom: 5px;
+            }
+        }
+    }
+}

@@ -1,0 +1,204 @@
+@import './mixins.scss';
+@import './variables.scss';
+
+.pokedex {
+    &-container {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 100px;
+
+        &-filters {
+            display: flex;
+            flex-direction: column;
+            margin-top: 16px;
+
+            @include lg {
+                position: relative;
+                height: 65px;
+            }
+
+            .dropdown-pokedex {
+                display: flex;
+                margin-left: 4rem;
+
+                p{
+                    width: 50px;
+                }
+
+                @include lg {
+                    position: absolute;
+                    
+                    &:first-child{
+                        right: 4rem;
+                    }
+                }
+            }
+        }
+
+        .cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 0 auto;
+            max-width: 1200px;
+
+            .pokemon {
+                background-color: #eee;
+                border-radius: 20px;
+                box-shadow: 0 3px 15px rgba(100, 100, 100, 0.5);
+                margin: 10px;
+                padding: 35px;
+                text-align: center;
+
+                &:hover {
+                    transform: scale(1.05);
+                    transition: transform 0.2s ease;
+                    cursor: pointer;
+                }
+
+                .img-container {
+                    background-color: rgba(255, 255, 255, 0.6);
+                    border-radius: 50%;
+                    width: 120px;
+                    height: 120px;
+                    text-align: center;
+
+                    .pokemon-card {
+                        margin-top: 20px;
+                        max-width: 90%;
+                    }
+                }
+
+                .info {
+                    margin-top: 20px;
+                }
+
+                .number {
+                    background-color: rgba(0, 0, 0, 0.1);
+                    border-radius: 10px;
+                    font-size: 0.8em;
+                    padding: 5px 10px;
+                }
+
+                .name {
+                    margin: 15px 0 7px;
+                    letter-spacing: 1px;
+                }
+
+                .pill {
+                    width: 80px;
+                    border-radius: 3px;
+                    line-height: 18px;
+                    margin-left: 20px;
+                }
+
+                .pill:first-child {
+                    margin-bottom: 4px;
+                }
+
+                @each $type-pokemon in $all-types-pokemon {
+                    .background-color-#{nth($type-pokemon,1)} {
+                        @include background-types-pokemon(nth($type-pokemon, 1), nth($type-pokemon, 2), nth($type-pokemon, 3));
+                    }
+                }
+
+
+            }
+        }
+
+
+        .select-box {
+
+
+            &--box {
+                width: 250px;
+                margin-left: 10px;
+                margin-bottom: 10px;
+                position: relative;
+                background-color: #313131;
+                color: white;
+                font-family: sans-serif;
+                border-radius: 10px;
+                padding: 10px 0;
+                border: none;
+                max-height: 46px;
+                overflow: hidden;
+                transition: max-height 0.3s ease-in-out;
+                cursor: pointer;
+
+                &.dropdown-open-true{
+                    max-height: 100%;
+                }
+            }
+
+            &--container {
+                display: flex;
+
+                .pokeball-icon {
+                    width: 25px;
+                    height: 25px;
+                    color: white;
+                    margin-left: 8px;
+                }
+            }
+
+            &--selected-item {
+
+                height: 100%;
+                width: 100%;
+                padding: 4px 12px;
+                vertical-align: middle;
+            }
+
+
+            &--items {
+
+                div, label{
+                    border-bottom: 1px solid #fff;
+                    padding: 6px 10px;
+                    background-color: #616161;
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+
+                    &:hover {
+                        background-color: #313131;
+                    }
+
+                    .dot-type{
+                        height: 20px;
+                        width: 20px;
+                        margin: 0 8px;
+                        border: 1px solid black;
+                        border-radius: 50%;
+
+                        @each $type-pokemon in $all-types-pokemon {
+                            &.dot-type-#{nth($type-pokemon,1)} {
+                                @include background-types-pokemon(nth($type-pokemon, 1), nth($type-pokemon, 2), nth($type-pokemon, 3));
+                            }
+                        }
+                    }
+                }
+
+                div:first-child, label:first-child {
+                    margin-top: 10px;
+                }
+            }
+
+            &--arrow {
+                width: 20px;
+                height: 20px;
+                position: absolute;
+                top: 13px;
+                right: 10px;
+
+                &-down {
+                    rotate: 180deg;
+                }
+            }
+
+        }
+    }
+}
